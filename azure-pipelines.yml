@@ -1,11 +1,16 @@
 # Starter pipeline
-- task: AzureCLI@2
+- task: AzureResourceManagerTemplateDeployment@3
   inputs:
-    azureSubscription: 'Evaluación gratuita(802d13f5-2c6f-4a1c-84bd-2d154e1275d2)'
-    scriptType: 'ps'
-    scriptLocation: 'scriptPath'
-    scriptPath: 'https://github.com/mitzysomadosi/pruebapipeline2/blob/master/pipeline2'
-
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Evaluación gratuita(802d13f5-2c6f-4a1c-84bd-2d154e1275d2)'
+    subscriptionId: '802d13f5-2c6f-4a1c-84bd-2d154e1275d2'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'pipeline2'
+    location: 'Central US'
+    templateLocation: 'Linked artifact'
+    csmFile: 'pipeline2'
+    csmParametersFile: 'vnet2.json'
+    deploymentMode: 'Incremental'
 
 trigger:
 - master
@@ -13,23 +18,3 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-
-    stage('Terraform init') {
-        sh 'terraform init'    
-    }
-    stage('Terraform plan') {
-        
-        sh "terraform plan"  
-    } 
-    stage('Terraform apply') {
-          
-        sh "terraform apply -auto-approve"
-    }
-     stage('Terraform show') {
-       
-        sh "terraform show -json"
-     }
-
-- script: |
-  
