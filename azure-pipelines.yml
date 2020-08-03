@@ -8,8 +8,7 @@
     resourceGroupName: 'pipeline2'
     location: 'Central US'
     templateLocation: 'Linked artifact'
-    csmFile: 'pipeline2'
-    csmParametersFile: 'vnet2.json'
+    csmFile: 'vnet2.json'
     deploymentMode: 'Incremental'
 
 trigger:
