@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-node {
+
     stage('Terraform init') {
         sh 'terraform init'    
     }
@@ -26,7 +26,6 @@ node {
        
         sh "terraform show -json"
      }
-}
 
 - script: |
   
