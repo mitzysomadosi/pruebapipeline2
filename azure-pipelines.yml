@@ -1,7 +1,11 @@
 # Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Evaluación gratuita(802d13f5-2c6f-4a1c-84bd-2d154e1275d2)'
+    scriptType: 'ps'
+    scriptLocation: 'scriptPath'
+    scriptPath: 'https://github.com/mitzysomadosi/pruebapipeline2/blob/master/pipeline2'
+
 
 trigger:
 - master
